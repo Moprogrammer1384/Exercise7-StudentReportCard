@@ -186,29 +186,9 @@ void SelectOption()
                 SortByGrade();
                 break;
             case "11":
-                //Console.WriteLine("AdvancedProgramming:");
-                //PrimeNumbers(AdvancedProgramming);
-                //Console.WriteLine("\nAdvancedProgramming2:"); 
-                //PrimeNumbers(AdvancedProgramming2);
-                //Console.WriteLine("\nOOP:");
-                //PrimeNumbers(OOP);
-                //Console.WriteLine("\nOS:");
-                //PrimeNumbers(OS);
-                //Console.WriteLine("\nAlgorithm:");
-                //PrimeNumbers(Algorithm);
-                //Console.WriteLine("\nMathematics:");
-                //PrimeNumbers(Mathematic);
-                //Console.WriteLine("\nQuran:");
-                //PrimeNumbers(Quran);
-                //Console.WriteLine("\nWorkShop:");
-                //PrimeNumbers(WorkShop);
-                //Console.WriteLine("\nEnglish:");
-                //PrimeNumbers(English);
-                //Console.WriteLine("\nPE:");
-                //PrimeNumbers(PE);
-                //Console.WriteLine();
                 int[][] Input = {  AdvancedProgramming , AdvancedProgramming2, OOP, OS, Algorithm, Mathematic, Quran, WorkShop, English, PE  };
                 string[] LessonNames = { "AdvancedProgramming", "AdvancedProgramming2", "OOP", "OS", "Algorithm", "Mathematic", "Quran", "WorkShop", "English", "PE" };
+                Console.WriteLine("-------------------------------------");
                 for (int i = 0; i < Input.Length; i++)
                 {
                     Console.Write($"{LessonNames[i]}: ");
@@ -557,6 +537,8 @@ static bool IsInt(string input)
 void PrimeNumbers(int[] Numbers)
 {
     bool Prime = true;
+    int[] Output = new int[Numbers.Length];
+    int Index = 0;
     for (int i = 0; i < Numbers.Length; i++)
     {
         if (Numbers[i] == 2)
@@ -571,11 +553,23 @@ void PrimeNumbers(int[] Numbers)
                 break;
             }
         }
-        if(Prime)
-            Console.Write($"{Numbers[i]}, ");
+        if (Prime)
+        {
+            Output[Index] = Numbers[i];
+            
+        }
+        Index++;
+           
 
         Numbers = Numbers.Where(n => n != Numbers[i]).ToArray();
     }
+    Array.Sort(Output);
+    for (int i = 0; i < Output.Length; i++)
+    {
+        if(Output[i] != 0)
+            Console.Write($"{Output[i]}  ");
+    }
+    
 }
 
 SelectOption();
