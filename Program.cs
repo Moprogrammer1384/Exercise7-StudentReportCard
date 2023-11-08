@@ -138,38 +138,23 @@ void SelectOption()
         {
             case "1":
                 AverageWritten();
-                for (int i = 0; i < Names.Length; i++)
-                {
-                    Console.WriteLine($"{Names[i]} : {WrittenAverage[i]}");
-                }
+                Print(WrittenAverage);
                 break;
             case "2":
                 AveragePractical();
-                for (int i = 0; i < Names.Length; i++)
-                {
-                    Console.WriteLine($"{Names[i]} : {PracticalAverage[i]}");
-                }
+                Print(PracticalAverage);
                 break;
             case "3":
                 AverageTheorical();
-                for (int i = 0; i < Names.Length; i++)
-                {
-                    Console.WriteLine($"{Names[i]} : {TheoricalAverage[i]}");
-                }
+                Print(TheoricalAverage);
                 break;
             case "4":
                 AverageMain();
-                for (int i = 0; i < Names.Length; i++)
-                {
-                    Console.WriteLine($"{Names[i]} : {MainAverage[i]}");
-                }
+                Print(MainAverage);
                 break;
             case "5":
                 AverageGeneral();
-                for (int i = 0; i < Names.Length; i++)
-                {
-                    Console.WriteLine($"{Names[i]} : {GeneralAverage[i]}");
-                }
+                Print(GeneralAverage);
                 break;
             case "6":
                 SortByWritten();
@@ -298,6 +283,14 @@ void AverageGeneral()
     }
 }
 
+void Print(double[] Averages) 
+{
+    for (int i = 0; i < Names.Length; i++)
+    {
+        Console.WriteLine($"{Names[i]} : {Averages[i]}");
+    }
+}
+
 void SortByWritten()
 {
     AverageWritten();
@@ -306,7 +299,7 @@ void SortByWritten()
     string Name = "";
     Console.Write("Please enter the number of students that you want to sort: ");
     string Input = Console.ReadLine();
-    if (IsInt(Input))
+    if (IsInt(Input) && IsNotNull(Input))
     {
         int Number = Convert.ToInt32(Input);
         for (int i = 0; i < Number; i++)
@@ -346,7 +339,7 @@ void SortByPractical()
     string Name = "";
     Console.Write("Please enter the number of students that you want to sort: ");
     string Input = Console.ReadLine();
-    if (IsInt(Input))
+    if (IsInt(Input) && IsNotNull(Input))
     {
         int Number = Convert.ToInt32(Input);
         for (int i = 0; i < Number; i++)
@@ -385,7 +378,7 @@ void SortByTheorical()
     string Name = "";
     Console.Write("Please enter the number of students that you want to sort: ");
     string Input = Console.ReadLine();
-    if (IsInt(Input))
+    if (IsInt(Input) && IsNotNull(Input))
     {
         int Number = Convert.ToInt32(Input);
         for (int i = 0; i < Number; i++)
@@ -426,7 +419,7 @@ void SortByMain()
     string Name = "";
     Console.Write("Please enter the number of students that you want to sort: ");
     string Input = Console.ReadLine();
-    if (IsInt(Input))
+    if (IsInt(Input) && IsNotNull(Input))
     {
         int Number = Convert.ToInt32(Input);
         for (int i = 0; i < Number; i++)
@@ -488,7 +481,7 @@ void SortByGrade()
     string Name = "";
     Console.Write("Please enter the number of students that you want to sort: ");
     string Input = Console.ReadLine();
-    if (IsInt(Input))
+    if (IsInt(Input) && IsNotNull(Input))
     {
         int Number = Convert.ToInt32(Input);
         for (int i = 0; i < Number; i++)
@@ -526,7 +519,7 @@ void SortByGrade()
 
 }
 
-static bool IsInt(string input)
+bool IsInt(string input)
 {
     foreach (char c in input)
     {
@@ -538,6 +531,12 @@ static bool IsInt(string input)
     return true;
 }
 
+bool IsNotNull(string Input)
+{
+    if (Input.Replace(" ", "") == "")
+        return false;
+    return true;            
+}
 void PrimeNumbers(int[] Numbers)
 {
     bool Prime = true;
