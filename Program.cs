@@ -157,16 +157,20 @@ void SelectOption()
                 Print(GeneralAverage);
                 break;
             case "6":
-                SortByWritten();
+                AverageWritten();
+                Sort(WrittenAverage);
                 break;
             case "7":
-                SortByPractical();
+                AveragePractical();
+                Sort(PracticalAverage);
                 break;
             case "8":
-                SortByTheorical();
+                AverageTheorical();
+                Sort(TheoricalAverage);
                 break;
             case "9":
-                SortByMain();
+                AverageMain();
+                Sort(MainAverage);
                 break;
             case "10":
                 SortByGrade();
@@ -291,10 +295,8 @@ void Print(double[] Averages)
     }
 }
 
-void SortByWritten()
+void Sort(double[] Averages)
 {
-    AverageWritten();
-     
     double Average = 0;
     string Name = "";
     Console.Write("Please enter the number of students that you want to sort: ");
@@ -304,155 +306,31 @@ void SortByWritten()
         int Number = Convert.ToInt32(Input);
         for (int i = 0; i < Number; i++)
         {
-            for (int j = 0; j < WrittenAverage.Length; j++)
+            for (int j = 0; j < Averages.Length; j++)
             {
-                if (WrittenAverage[j] > Average)
+                if (Averages[j] > Average)
                 {
-                    Average = WrittenAverage[j];
+                    Average = Averages[j];
                     Name = Names[j];
                 }
 
             }
             Console.WriteLine($"{i + 1}.{Name.Replace(" ", "")} : {Average}");
-            int Index = Array.IndexOf(WrittenAverage, Average);
-            for (int x = Index + 1; x < WrittenAverage.Length; x++)
+            int Index = Array.IndexOf(Averages, Average);
+            for (int x = Index + 1; x < Averages.Length; x++)
             {
-                WrittenAverage[x - 1] = WrittenAverage[x];
+                Averages[x - 1] = Averages[x];
                 Names[x - 1] = Names[x];
             }
-            WrittenAverage[WrittenAverage.Length - 1] = 0;
+            Averages[Averages.Length - 1] = 0;
             Names[Names.Length - 1] = "";
-            
+
             Average = 0;
         }
     }
     else
         Console.WriteLine("Please enter a correct number!!!");
-
 }
-
-void SortByPractical()
-{
-    AveragePractical();
-    
-    double Average = 0;
-    string Name = "";
-    Console.Write("Please enter the number of students that you want to sort: ");
-    string Input = Console.ReadLine();
-    if (IsInt(Input) && IsNotNull(Input))
-    {
-        int Number = Convert.ToInt32(Input);
-        for (int i = 0; i < Number; i++)
-        {
-            for (int j = 0; j < PracticalAverage.Length; j++)
-            {
-                if (PracticalAverage[j] > Average)
-                {
-                    Average = PracticalAverage[j];
-                    Name = Names[j];
-                }
-
-            }
-            Console.WriteLine($"{i + 1}.{Name.Replace(" ", "")} : {Average}");
-            int Index = Array.IndexOf(PracticalAverage, Average);
-            for (int x = Index + 1; x < PracticalAverage.Length; x++)
-            {
-                PracticalAverage[x - 1] = PracticalAverage[x];
-                Names[x - 1] = Names[x];
-            }
-            PracticalAverage[PracticalAverage.Length - 1] = 0;
-            Names[Names.Length - 1] = "";
-
-            Average = 0;
-        }
-    }
-    
-
-}
-
-void SortByTheorical()
-{
-    AverageTheorical();
-    
-    double Average = 0;
-    string Name = "";
-    Console.Write("Please enter the number of students that you want to sort: ");
-    string Input = Console.ReadLine();
-    if (IsInt(Input) && IsNotNull(Input))
-    {
-        int Number = Convert.ToInt32(Input);
-        for (int i = 0; i < Number; i++)
-        {
-            for (int j = 0; j < TheoricalAverage.Length; j++)
-            {
-                if (TheoricalAverage[j] > Average)
-                {
-                    Average = TheoricalAverage[j];
-                    Name = Names[j];
-                }
-
-            }
-            Console.WriteLine($"{i + 1}.{Name.Replace(" ", "")} : {Average}");
-
-            int Index = Array.IndexOf(TheoricalAverage, Average);
-            for (int x = Index + 1; x < TheoricalAverage.Length; x++)
-            {
-                TheoricalAverage[x - 1] = TheoricalAverage[x];
-                Names[x - 1] = Names[x];
-            }
-            TheoricalAverage[TheoricalAverage.Length - 1] = 0;
-            Names[Names.Length - 1] = "";
-            Average = 0;
-        }
-    }
-    else
-        Console.WriteLine("Please enter a correct number !!!");
-    
-
-}
-
-void SortByMain()
-{
-    AverageMain();
-    
-    double Average = 0;
-    string Name = "";
-    Console.Write("Please enter the number of students that you want to sort: ");
-    string Input = Console.ReadLine();
-    if (IsInt(Input) && IsNotNull(Input))
-    {
-        int Number = Convert.ToInt32(Input);
-        for (int i = 0; i < Number; i++)
-        {
-            for (int j = 0; j < MainAverage.Length; j++)
-            {
-                if (MainAverage[j] > Average)
-                {
-                    Average = MainAverage[j];
-                    Name = Names[j];
-                }
-
-            }
-            Console.WriteLine($"{i + 1}.{Name.Replace(" ", "")} : {Average}");
-
-            int Index = Array.IndexOf(MainAverage, Average);
-            for (int x = Index + 1; x < MainAverage.Length; x++)
-            {
-                MainAverage[x - 1] = MainAverage[x];
-                Names[x - 1] = Names[x];
-            }
-            MainAverage[MainAverage.Length - 1] = 0;
-            Names[Names.Length - 1] = "";
-            Average = 0;
-        }
-    }
-    else
-        Console.WriteLine("Please enter a correct number!!!");
-    
-    
-
-}
-
 
 char Rank(double Average)
 {
@@ -537,6 +415,7 @@ bool IsNotNull(string Input)
         return false;
     return true;            
 }
+
 void PrimeNumbers(int[] Numbers)
 {
     bool Prime = true;
