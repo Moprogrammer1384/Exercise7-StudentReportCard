@@ -114,12 +114,13 @@ void Welcome()
 3.Theorical Average
 4.Main Average
 5.General Average
-6.Top 10 by written average
-7.Top 10 by practical average
-8.Top 10 by theorical average
-9.Top 10 by main average 
-10.Top 10 by grade
-11.Find prime numbers in lessons marks";
+6.Top students by written average
+7.Top students by practical average
+8.Top students by theorical average
+9.Top students by main average 
+10.Top students by grade
+11.Find prime numbers in lessons marks
+12.Exit";
     Console.WriteLine(Menu);
     Console.WriteLine("*****************************************");
 
@@ -197,6 +198,9 @@ void SelectOption()
                     
                 }
                 break;
+            case "12":
+                Environment.Exit(0);
+                break;
             default:
                 Console.WriteLine("Please enter a correct number!!!!!");
                 break;
@@ -213,9 +217,9 @@ void AverageWritten()
     for (int i = 0; i < Names.Length; i++)
     {
         TotalMarks = Quran[i] + 
-                     Mathematic[i] * 2 + 
+                     (Mathematic[i] * 2) + 
                      WorkShop[i] + 
-                     English[i] * 2 + 
+                     (English[i] * 2) + 
                      PE[i];    
         WrittenAverage[i] = Math.Round((double)TotalMarks / (double)7, 2);
         TotalMarks = 0;
@@ -230,9 +234,9 @@ void AveragePractical()
     PracticalAverage = new double[100];
     for (int i = 0; i < Names.Length; i++)
     {
-        TotalMarks = AdvancedProgramming[i] * 3 + 
-                     AdvancedProgramming2[i] * 3 + 
-                     OOP[i] * 3;
+        TotalMarks = (AdvancedProgramming[i] * 3) + 
+                     (AdvancedProgramming2[i] * 3) + 
+                     (OOP[i] * 3);
         PracticalAverage[i] = Math.Round((double)TotalMarks / (double)9, 2);
         TotalMarks = 0;
     }
@@ -246,8 +250,8 @@ void AverageTheorical()
     TheoricalAverage = new double[100];
     for (int i = 0; i < Names.Length; i++)
     {
-        TotalMarks = OS[i] * 3 + 
-                     Algorithm[i] * 3;
+        TotalMarks = (OS[i] * 3) + 
+                     (Algorithm[i] * 3);
         TheoricalAverage[i] = Math.Round((double)TotalMarks / (double)6, 2);
         TotalMarks = 0;
     }
@@ -261,11 +265,11 @@ void AverageMain()
     MainAverage = new double[100];  
     for (int i = 0; i < Names.Length; i++)
     {
-        TotalMarks = OS[i] * 3 + 
-                     Algorithm[i] * 3 + 
-                     AdvancedProgramming[i] * 3 + 
-                     AdvancedProgramming2[i] * 3 + 
-                     OOP[i] * 3;
+        TotalMarks = (OS[i] * 3) + 
+                     (Algorithm[i] * 3) + 
+                     (AdvancedProgramming[i] * 3) + 
+                     (AdvancedProgramming2[i] * 3) + 
+                     (OOP[i] * 3);
         MainAverage[i] = Math.Round((double)TotalMarks / (double)15, 2);
         TotalMarks = 0;
     }
@@ -279,16 +283,16 @@ void AverageGeneral()
     GeneralAverage = new double[100];   
     for (int i = 0; i < Names.Length; i++)
     {
-        TotalMarks = AdvancedProgramming[i] * 3 +
-                     AdvancedProgramming2[i] * 3 + 
+        TotalMarks = (AdvancedProgramming[i] * 3) +
+                     (AdvancedProgramming2[i] * 3) + 
                      Quran[i] + 
-                     Mathematic[i] * 2 +
+                     (Mathematic[i] * 2) +
                      WorkShop[i] +
-                     English[i] * 2 +
-                     OOP[i] * 3 +
+                     (English[i] * 2) +
+                     (OOP[i] * 3) +
                      PE[i] +
                      OS[i] * 3 +
-                     Algorithm[i] * 3;
+                     (Algorithm[i] * 3);
         GeneralAverage[i] = Math.Round((double)TotalMarks / (double)22, 2);
         TotalMarks = 0;
     }
